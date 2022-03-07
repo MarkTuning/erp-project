@@ -4,6 +4,11 @@
 
         <br>
 
+        <div>{{ $documentNo != null ? 'DocumentNo: ' . $documentNo : '' }}</div>
+        <div>{{ $documentDate != null ? 'DocumentDate: ' . $documentDate : '' }}</div>
+
+        <br>
+
         <form method="POST" action="{{ route('logout') }}">
             @csrf
 

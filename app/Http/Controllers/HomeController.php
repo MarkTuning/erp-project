@@ -11,14 +11,24 @@ class HomeController extends Controller
     {
         $url = 'https://demodb.my.erp.net/api/domain/odata/Crm_Sales_SalesOrders';
 
-        $query = '?$top=10&$filter=Id%20eq%2070c5792a-9d51-4c67-b90b-96ba79c0c9b1&$select=DocumentDate,DocumentNo HTTP/1.1';
+        $query = '?$top=1&$filter=Id%20eq%2070c5792a-9d51-4c67-b90b-96ba79c0c9b1&$select=DocumentDate,DocumentNo';
 
         $response = Http::withHeaders([
             'Authorization' => $request->input('Authorization'),
         ])->get($url . $query)->json();
 
-        // dd($response);
+        $documentNo = '';
+        $documentDate = '';
 
-        return view('home');
+        if (isset($response['value'])) {
+            $documentNo = $response['value'][0]['DocumentNo'];
+
+            $documentDate = $response['value'][0]['DocumentDate'];
+        }
+
+        return view('home', [
+            'documentNo' => $documentNo,
+            'documentDate' => $documentDate,
+        ]);
     }
 }
