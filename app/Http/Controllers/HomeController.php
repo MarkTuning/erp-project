@@ -16,8 +16,7 @@ class HomeController extends Controller
         ])->get($url)->json();
 
         return view('home', [
-            'documentNo' => $response['DocumentNo'],
-            'documentDate' => $response['DocumentDate'],
+            'data' => $response,
         ]);
     }
 }

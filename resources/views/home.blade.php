@@ -4,8 +4,8 @@
 
         <br>
 
-        <div>{{ $documentNo != null ? 'DocumentNo: ' . $documentNo : '' }}</div>
-        <div>{{ $documentDate != null ? 'DocumentDate: ' . $documentDate : '' }}</div>
+        <div>DocumentNo: {{ $data['DocumentNo'] }}</div>
+        <div>DocumentDate: {{ $data['DocumentDate'] }}</div>
 
         <br>
 

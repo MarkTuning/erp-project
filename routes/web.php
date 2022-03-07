@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [SessionController::class, 'index'])->name('login.page');
 
-Route::get('/home', [HomeController::class, 'index'])->name('main.page');
-
 Route::post('/login', [SessionController::class, 'attempt'])->name('login.attempt');
 
-Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
+Route::group(['middleware' => ['check.session']], function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('main.page');
+
+    Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
+});

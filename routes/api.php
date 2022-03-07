@@ -32,7 +32,7 @@ Route::get('/getSale', function (Request $request) {
         $data['DocumentDate'] = $response['value'][0]['DocumentDate'];
     }
     else {
-        $data['error'] = 'An error occured when trying to get the information';
+        $data['error'] = 'An error occured when trying to get the information.';
     }
 
     return json_encode($data);
